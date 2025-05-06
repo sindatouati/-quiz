@@ -1,119 +1,56 @@
+<!-- index.html -->
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>اختبار الذكاء العاطفي</title>
+  <meta charset="UTF-8">
+  <title>اختبار الذكاء العاطفي للمعلمين</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      text-align: center;
-      direction: rtl;
-      background-color: #f9f9f9;
-      margin: 0;
-      padding: 0;
-    }
-
-    nav {
-      background-color: #009688;
-      padding: 1em;
-    }
-
-    nav button {
-      margin: 0 10px;
-      padding: 10px 20px;
-      border: none;
-      background-color: #ffffff;
-      color: #009688;
-      font-weight: bold;
-      cursor: pointer;
-      border-radius: 5px;
-    }
-
-    section {
-      display: none;
-      padding: 20px;
-    }
-
-    .active {
-      display: block;
-    }
-
-    .question {
-      margin: 15px 0;
-    }
-
-    .result {
-      font-size: 20px;
-      font-weight: bold;
-      color: #333;
-      margin: 20px 0;
-    }
+    body { text-align: center; font-family: 'Arial', sans-serif; background: #f0f0f0; direction: rtl; }
+    nav { margin-top: 50px; }
+    button { margin: 10px; padding: 15px 30px; font-size: 18px; cursor: pointer; }
+    .content { margin-top: 30px; font-size: 20px; }
   </style>
 </head>
 <body>
+  <h1>اختبار الذكاء العاطفي للمعلمين</h1>
   <nav>
-    <button onclick="showSection('about')">من نحن؟</button>
-    <button onclick="showSection('intro')">الإستقبال</button>
-    <button onclick="showSection('quiz')">إبدأ الإختبار</button>
+    <button onclick="document.getElementById('about').style.display='block'">من نحن؟</button>
+    <button onclick="document.getElementById('intro').style.display='block'">الإستقبال</button>
+    <a href="quiz.html"><button>ابدأ الإختبار</button></a>
   </nav>
-
-  <section id="about" class="active">
+  <div id="about" class="content" style="display:none;">
     <p>سندة التواتي طالبة بالمعهد العالي للدراسات التطبيقية في الإنسانيات بزغوان</p>
     <p>سوسن سلامة طالبة بالمعهد العالي للدراسات التطبيقية في الإنسانيات بزغوان</p>
-  </section>
+  </div>
+  <div id="intro" class="content" style="display:none;">
+    <p>اختبار الذكاء العاطفي للمعلمين</p>
+    <p>مرحبًا بك في هذا الاختبار التفاعلي الذي يهدف إلى قياس مستوى الذكاء العاطفي لديك كمعلم.</p>
+    <p>ستساعدك الأسئلة التالية على التعرف على قدراتك في إدارة مشاعرك وفهم مشاعر تلاميذك.</p>
+  </div>
+</body>
+</html>
 
-  <section id="intro">
-    <p>
-      اختبار الذكاء العاطفي للمعلمين<br>
-      مرحبًا بك في هذا الاختبار التفاعلي الذي يهدف إلى قياس مستوى الذكاء العاطفي لديك كمعلم.
-      ستساعدك الأسئلة التالية على التعرف على قدراتك في إدارة مشاعرك وفهم مشاعر تلاميذك.
-      اضغط على زر البدء للانطلاق!
-    </p>
-  </section>
-
-  <section id="quiz">
-    <form id="quizForm">
-      <div id="questions"></div>
-      <button type="button" onclick="calculateScore()">إرسال</button>
-    </form>
-  </section>
-
-  <section id="resultPage">
-    <div id="result" class="result"></div>
-    <button onclick="showTips()">👀 عرض نصائح لتعزيز الذكاء العاطفي</button>
-    <div id="tips" style="display: none; text-align: center;">
-      <h3>🧠 إليك بعض النصائح العملية لتعزيز مهارات الذكاء العاطفي لديك</h3>
-
-      <p><strong>أولًا: وعي الذات</strong><br>
-      تأمل المشاعر اليومية: خصص بضع دقائق كل يوم لتسأل نفسك: ماذا أشعر الآن؟ ولماذا؟<br>
-      تدوين الانفعالات: سجل المواقف التي أثرت عليك عاطفيًا خلال اليوم، ولاحظ أنماطها<br>
-      طلب تغذية راجعة: اطلب آراء الزملاء أو التلاميذ بثقة، لتتعرف على كيف يراك الآخرون</p>
-
-      <p><strong>🧘 ثانيًا: تنظيم الذات</strong><br>
-      التنفس العميق قبل الرد: خذ نفسًا عميقًا قبل أن تتفاعل مع مواقف استفزازية داخل الصف<br>
-      التحكم في نبرة الصوت: حافظ على هدوء صوتك مهما كانت الظروف، فهو ينقل الكثير من الرسائل<br>
-      استخدام عبارات "أنا" بدلًا من "أنت": قل مثلًا: أنا أشعر بالإحباط بدلًا من أنت تزعج الصف</p>
-
-      <p><strong>❤️ ثالثًا: التعاطف</strong><br>
-      استمع بإنصات: امنح التلميذ كامل انتباهك عندما يتحدث، حتى لو كنت مشغولًا<br>
-      ضع نفسك مكان التلميذ: اسأل نفسك: كيف سأشعر لو كنت مكانه؟<br>
-      افهم الخلفيات المختلفة: حاول أن تكون واعيًا لظروف تلاميذك الثقافية والاجتماعية والنفسية</p>
-
-      <p><strong>🧑‍🤝‍🧑 رابعًا: المهارات الاجتماعية</strong><br>
-      بناء علاقات إيجابية مع التلاميذ: استخدم كلمات تشجيعية وأظهر اهتمامًا حقيقيًا بمواهبهم<br>
-      حل النزاعات بحكمة: كن وسيطًا لا قاضيًا، واستمع لجميع الأطراف<br>
-      التواصل الواضح والفعال: استخدم لغة بسيطة، وتعابير وجه مناسبة للموقف</p>
-
-      <p><strong>🔋 خامسًا: التحفيز الذاتي</strong><br>
-      ضع أهدافًا مهنية وشخصية: أهداف واضحة تساعدك على البقاء متحمسًا<br>
-      احتفل بالنجاحات الصغيرة: حتى التقدم البسيط يستحق التقدير<br>
-      حافظ على الشغف بالتدريس: شارك في ورش تعليمية، أو اقرأ عن قصص ملهمة في التعليم</p>
-    </div>
-  </section>
-
+<!-- quiz.html -->
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>الاختبار</title>
+  <style>
+    body { text-align: center; font-family: 'Arial', sans-serif; background: #f9f9f9; direction: rtl; }
+    .question { margin: 20px; font-size: 18px; }
+    input[type=radio] { margin: 0 5px; }
+    button { margin-top: 30px; padding: 10px 25px; font-size: 18px; }
+  </style>
+</head>
+<body>
+  <h2>اختبار الذكاء العاطفي</h2>
+  <form id="quizForm">
+    <div id="questions"></div>
+    <button type="submit">إرسال</button>
+  </form>
   <script>
-    const questionsData = [
+    const questions = [
       "أستطيع التعرف على مشاعري بسهولة أثناء التدريس",
       "ألاحظ مشاعر تلاميذي حتى لو لم يعبروا عنها بالكلمات",
       "أستطيع تمييز الفروق بين المشاعر المختلفة التي أمر بها في خلال الحصة",
@@ -130,57 +67,96 @@
       "أستمع بعمق لمشاعر التلاميذ وأمنحهم الشعور بأنهم مفهومون ومقدَّرون"
     ];
 
-    const questionsContainer = document.getElementById("questions");
-
-    questionsData.forEach((question, index) => {
-      const div = document.createElement("div");
-      div.classList.add("question");
-      div.innerHTML = `<p>${index + 1}. ${question}</p>` +
-        [1, 2, 3, 4, 5].map(num => 
-          `<label><input type="radio" name="q${index}" value="${num}" required> ${num}</label>`).join(" ");
-      questionsContainer.appendChild(div);
+    const questionsDiv = document.getElementById('questions');
+    questions.forEach((q, index) => {
+      let html = `<div class="question">
+        <p>${index + 1}. ${q}</p>`;
+      for (let i = 1; i <= 5; i++) {
+        html += `<label><input type="radio" name="q${index}" value="${i}" required> ${i}</label>`;
+      }
+      html += `</div>`;
+      questionsDiv.innerHTML += html;
     });
 
-    function showSection(id) {
-      document.querySelectorAll("section").forEach(section => {
-        section.classList.remove("active");
-      });
-      document.getElementById(id).classList.add("active");
-    }
-
-    function calculateScore() {
+    document.getElementById('quizForm').addEventListener('submit', function(e) {
+      e.preventDefault();
       let total = 0;
-      let answered = 0;
-      questionsData.forEach((_, index) => {
-        const selected = document.querySelector(`input[name="q${index}"]:checked`);
-        if (selected) {
-          total += parseInt(selected.value);
-          answered++;
-        }
-      });
-
-      if (answered < questionsData.length) {
-        alert("يرجى الإجابة على جميع الأسئلة.");
-        return;
+      for (let i = 0; i < questions.length; i++) {
+        const val = document.querySelector(`input[name="q${i}"]:checked`).value;
+        total += parseInt(val);
       }
-
-      const average = total / questionsData.length;
-      let message = "";
-      if (average >= 4) {
-        message = "👏 لديك ذكاء عاطفي عالي!";
-      } else if (average >= 2.5) {
-        message = "🙂 أنت تؤدي بشكل جيد، لكن هناك مجال للنمو.";
-      } else {
-        message = "🧠 دعنا نعمل على تحسين ذكائك العاطفي! انتقل للنصائح أدناه.";
-      }
-
-      document.getElementById("result").textContent = message;
-      showSection("resultPage");
-    }
-
-    function showTips() {
-      document.getElementById("tips").style.display = "block";
-    }
+      const score = total / questions.length;
+      localStorage.setItem("eiScore", score);
+      window.location.href = "result.html";
+    });
   </script>
+</body>
+</html>
+
+<!-- result.html -->
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>النتيجة</title>
+  <style>
+    body { text-align: center; font-family: 'Arial', sans-serif; background: #fdfdfd; direction: rtl; padding-top: 50px; }
+    .result { font-size: 24px; margin-bottom: 30px; }
+    button { font-size: 18px; padding: 10px 20px; }
+  </style>
+</head>
+<body>
+  <div class="result" id="resultText"></div>
+  <button onclick="window.location.href='advice.html'">👀 عرض نصائح لتعزيز الذكاء العاطفي</button>
+
+  <script>
+    const score = parseFloat(localStorage.getItem("eiScore"));
+    let message = "";
+    if (score >= 4) {
+      message = "👏 لديك ذكاء عاطفي عالي!";
+    } else if (score >= 2.5) {
+      message = "🙂 أنت تؤدي بشكل جيد، لكن هناك مجال للنمو.";
+    } else {
+      message = "🧠 دعنا نعمل على تحسين ذكائك العاطفي! انتقل للنصائح أدناه.";
+    }
+    document.getElementById("resultText").innerText = message;
+  </script>
+</body>
+</html>
+
+<!-- advice.html -->
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>نصائح لتعزيز الذكاء العاطفي</title>
+  <style>
+    body { font-family: 'Arial', sans-serif; padding: 30px; background-color: #f0f0f0; text-align: center; direction: rtl; }
+    h2 { color: #333; }
+    p { font-size: 18px; line-height: 1.8; }
+  </style>
+</head>
+<body>
+  <h2>🧠 إليك بعض النصائح العملية لتعزيز مهارات الذكاء العاطفي لديك</h2>
+  <p>أولًا: وعي الذات</p>
+  <p>تأمل المشاعر اليومية: خصص بضع دقائق كل يوم لتسأل نفسك: ماذا أشعر الآن؟ ولماذا؟</p>
+  <p>تدوين الانفعالات: سجل المواقف التي أثرت عليك عاطفيًا خلال اليوم، ولاحظ أنماطها</p>
+  <p>طلب تغذية راجعة: اطلب آراء الزملاء أو التلاميذ بثقة، لتتعرف على كيف يراك الآخرون</p>
+  <p>🧘 ثانيًا: تنظيم الذات</p>
+  <p>التنفس العميق قبل الرد: خذ نفسًا عميقًا قبل أن تتفاعل مع مواقف استفزازية داخل الصف</p>
+  <p>التحكم في نبرة الصوت: حافظ على هدوء صوتك مهما كانت الظروف، فهو ينقل الكثير من الرسائل</p>
+  <p>استخدام عبارات "أنا" بدلًا من "أنت": قل مثلًا: أنا أشعر بالإحباط بدلًا من أنت تزعج الصف</p>
+  <p>❤️ ثالثًا: التعاطف</p>
+  <p>استمع بإنصات: امنح التلميذ كامل انتباهك عندما يتحدث، حتى لو كنت مشغولًا</p>
+  <p>ضع نفسك مكان التلميذ: اسأل نفسك: كيف سأشعر لو كنت مكانه؟</p>
+  <p>افهم الخلفيات المختلفة: حاول أن تكون واعيًا لظروف تلاميذك الثقافية والاجتماعية والنفسية</p>
+  <p>🧑‍🤝‍🧑 رابعًا: المهارات الاجتماعية</p>
+  <p>بناء علاقات إيجابية مع التلاميذ: استخدم كلمات تشجيعية وأظهر اهتمامًا حقيقيًا بمواهبهم</p>
+  <p>حل النزاعات بحكمة: كن وسيطًا لا قاضيًا، واستمع لجميع الأطراف</p>
+  <p>التواصل الواضح والفعال: استخدم لغة بسيطة، وتعابير وجه مناسبة للموقف</p>
+  <p>🔋 خامسًا: التحفيز الذاتي</p>
+  <p>ضع أهدافًا مهنية وشخصية: أهداف واضحة تساعدك على البقاء متحمسًا</p>
+  <p>احتفل بالنجاحات الصغيرة: حتى التقدم البسيط يستحق التقدير</p>
+  <p>حافظ على الشغف بالتدريس: شارك في ورش تعليمية، أو اقرأ عن قصص ملهمة في التعليم</p>
 </body>
 </html>
