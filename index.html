@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>اختبار الذكاء العاطفي للمعلمين</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 20px;
+      line-height: 1.6;
+    }
+    header, section {
+      margin-bottom: 30px;
+    }
+    nav {
+      background-color: #007BFF;
+      padding: 10px;
+      text-align: center;
+    }
+    nav button {
+      background-color: white;
+      color: #007BFF;
+      border: none;
+      padding: 10px 15px;
+      margin: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    nav button:hover {
+      background-color: #e7e7e7;
+    }
+    .hidden {
+      display: none;
+    }
+    .question {
+      margin: 20px 0;
+    }
+    .question span {
+      display: block;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+    .result {
+      font-size: 20px;
+      margin-top: 20px;
+    }
+    .tips {
+      margin-top: 20px;
+      background: #fff;
+      padding: 20px;
+      border: 1px solid #ccc;
+    }
+    .tips h3 {
+      margin-top: 0;
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <button onclick="showSection('about')">من نحن؟</button>
+  <button onclick="showSection('intro')">الإستقبال</button>
+  <button onclick="showSection('quiz')">إبدأ الإختبار</button>
+</nav>
+
+<section id="about" class="hidden">
+  <h2>من نحن؟</h2>
+  <p>سندة التواتي طالبة بالمعهد العالي للدراسات التطبيقية في الإنسانيات بزغوان</p>
+  <p>سوسن سلامة طالبة بالمعهد العالي للدراسات التطبيقية في الإنسانيات بزغوان</p>
+</section>
+
+<section id="intro" class="hidden">
+  <h2>الإستقبال</h2>
+  <p>اختبار الذكاء العاطفي للمعلمين</p>
+  <p>مرحبًا بك في هذا الاختبار التفاعلي الذي يهدف إلى قياس مستوى الذكاء العاطفي لديك كمعلم. ستساعدك 
+الأسئلة التالية على التعرف على قدراتك في إدارة مشاعرك وفهم مشاعر تلاميذك. اضغط على زر البدء للانطلاق!</p>
+</section>
+
+<section id="quiz" class="hidden">
+  <h2>الاختبار</h2>
+  <form id="quizForm">
+    <div id="questions"></div>
+    <button type="submit">إرسال</button>
+  </form>
+</section>
+
+<section id="result" class="hidden">
+  <h2>النتيجة</h2>
+  <div class="result" id="resultMessage"></div>
+  <button onclick="showSection('tips')">👀 عرض نصائح لتعزيز الذكاء العاطفي</button>
+</section>
+
+<section id="tips" class="hidden">
+  <h2>نصائح لتعزيز الذكاء العاطفي</h2>
+  <div class="tips">
+    <h3>🧠 إليك بعض النصائح العملية لتعزيز مهارات الذكاء العاطفي لديك</h3>
+    <p><strong>أولًا: وعي الذات</strong><br>
+    تأمل المشاعر اليومية، تدوين الانفعالات، طلب تغذية راجعة.</p>
+    <p><strong>🧘 ثانيًا: تنظيم الذات</strong><br>
+    التنفس العميق، التحكم في نبرة الصوت، استخدام عبارات "أنا".</p>
+    <p><strong>❤️ ثالثًا: التعاطف</strong><br>
+    الاستماع بإنصات، وضع نفسك مكان التلميذ، فهم الخلفيات.</p>
+    <p><strong>🧑‍🤝‍🧑 رابعًا: المهارات الاجتماعية</strong><br>
+    بناء علاقات، حل النزاعات، التواصل الفعال.</p>
+    <p><strong>🔋 خامسًا: التحفيز الذاتي</strong><br>
+    وضع أهداف، الاحتفال بالنجاحات، الحفاظ على الشغف بالتدريس.</p>
+  </div>
+</section>
+
+<script>
+  const questions = [
+    "أستطيع التعرف على مشاعري بسهولة أثناء التدريس",
+    "ألاحظ مشاعر تلاميذي حتى لو لم يعبروا عنها بالكلمات",
+    "أستطيع تمييز الفروق بين المشاعر المختلفة التي أمر بها في خلال الحصة",
+    "أستطيع تمييز كيف تؤثر مشاعري الشخصية على تفاعلي مع التلاميذ واتخاذ خطوات لضبطها عند الحاجة",
+    "أفهم كيف يمكن أن تتطور المشاعر خلال المواقف المختلفة في القسم",
+    "أتمكن من تهدئة نفسي عندما أشعر بالغضب أو التوتر في القسم",
+    "أستطيع مساعدة التلاميذ على التحكم في مشاعرهم أثناء المواقف الصعبة",
+    "أتعامل مع مشاعر الإحباط أو الحزن لدى التلاميذ بطريقة فعالة",
+    "أستخدم عواطفي لتحفيز نفسي على تحسين جودة التدريس",
+    "أستطيع خلق جو تعليمي إيجابي باستخدام مشاعري الإيجابية",
+    "أستخدم الذكاء العاطفي لحل النزاعات بين التلاميذ بفعالية",
+    "أستطيع تعزيز مشاعر الثقة بالنفس لدى تلاميذي من خلال تعاطفي معهم",
+    "أستغل المشاعر الإيجابية لتعزيز تجربة التعلم لدى التلاميذ",
+    "أستمع بعمق لمشاعر التلاميذ وأمنحهم الشعور بأنهم مفهومون ومقدَّرون"
+  ];
+
+  function showSection(id) {
+    document.querySelectorAll("section").forEach(sec => sec.classList.add("hidden"));
+    document.getElementById(id).classList.remove("hidden");
+  }
+
+  function createQuestions() {
+    const container = document.getElementById("questions");
+    questions.forEach((q, index) => {
+      const div = document.createElement("div");
+      div.className = "question";
+      const span = document.createElement("span");
+      span.textContent = `${index + 1}. ${q}`;
+      div.appendChild(span);
+      for (let i = 1; i <= 5; i++) {
+        const input = document.createElement("input");
+        input.type = "radio";
+        input.name = `q${index}`;
+        input.value = i;
+        input.required = true;
+        div.appendChild(input);
+        div.append(` ${i} `);
+      }
+      container.appendChild(div);
+    });
+  }
+
+  document.getElementById("quizForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+    const form = new FormData(e.target);
+    let total = 0;
+    for (let [key, value] of form.entries()) {
+      total += parseInt(value);
+    }
+    const score = total / questions.length;
+    let message = "";
+    if (score >= 4) {
+      message = "👏 لديك ذكاء عاطفي عالي!";
+    } else if (score >= 2.5) {
+      message = "🙂 أنت تؤدي بشكل جيد، لكن هناك مجال للنمو.";
+    } else {
+      message = "🧠 دعنا نعمل على تحسين ذكائك العاطفي! انتقل للنصائح أدناه.";
+    }
+    document.getElementById("resultMessage").textContent = message;
+    showSection("result");
+  });
+
+  // Initialize quiz questions
+  createQuestions();
+</script>
+
+</body>
+</html>
