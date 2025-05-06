@@ -9,14 +9,16 @@
       font-family: Arial, sans-serif;
       text-align: center;
       direction: rtl;
+      background-color: #f9f9f9;
       margin: 0;
       padding: 0;
-      background-color: #f9f9f9;
     }
+
     nav {
       background-color: #009688;
       padding: 1em;
     }
+
     nav button {
       margin: 0 10px;
       padding: 10px 20px;
@@ -27,19 +29,20 @@
       cursor: pointer;
       border-radius: 5px;
     }
+
     section {
-      padding: 20px;
       display: none;
+      padding: 20px;
     }
+
     .active {
       display: block;
     }
+
     .question {
       margin: 15px 0;
     }
-    .hidden {
-      display: none;
-    }
+
     .result {
       font-size: 20px;
       font-weight: bold;
@@ -74,10 +77,14 @@
       <div id="questions"></div>
       <button type="button" onclick="calculateScore()">إرسال</button>
     </form>
-    <div id="result" class="result hidden"></div>
-    <button id="showTipsBtn" class="hidden" onclick="showTips()">👀 عرض نصائح لتعزيز الذكاء العاطفي</button>
-    <div id="tips" class="hidden">
+  </section>
+
+  <section id="resultPage">
+    <div id="result" class="result"></div>
+    <button onclick="showTips()">👀 عرض نصائح لتعزيز الذكاء العاطفي</button>
+    <div id="tips" style="display: none; text-align: center;">
       <h3>🧠 إليك بعض النصائح العملية لتعزيز مهارات الذكاء العاطفي لديك</h3>
+
       <p><strong>أولًا: وعي الذات</strong><br>
       تأمل المشاعر اليومية: خصص بضع دقائق كل يوم لتسأل نفسك: ماذا أشعر الآن؟ ولماذا؟<br>
       تدوين الانفعالات: سجل المواقف التي أثرت عليك عاطفيًا خلال اليوم، ولاحظ أنماطها<br>
@@ -158,9 +165,6 @@
       }
 
       const average = total / questionsData.length;
-      const resultDiv = document.getElementById("result");
-      const tipsBtn = document.getElementById("showTipsBtn");
-
       let message = "";
       if (average >= 4) {
         message = "👏 لديك ذكاء عاطفي عالي!";
@@ -170,13 +174,12 @@
         message = "🧠 دعنا نعمل على تحسين ذكائك العاطفي! انتقل للنصائح أدناه.";
       }
 
-      resultDiv.textContent = message;
-      resultDiv.classList.remove("hidden");
-      tipsBtn.classList.remove("hidden");
+      document.getElementById("result").textContent = message;
+      showSection("resultPage");
     }
 
     function showTips() {
-      document.getElementById("tips").classList.remove("hidden");
+      document.getElementById("tips").style.display = "block";
     }
   </script>
 </body>
