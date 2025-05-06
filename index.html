@@ -4,18 +4,26 @@
   <meta charset="UTF-8">
   <title>اختبار الذكاء العاطفي للمعلمين</title>
   <style>
+    * {
+      box-sizing: border-box;
+    }
     body {
       font-family: 'Arial', sans-serif;
-      background-color: #f4f4f4;
+      background-color: #f0f2f5;
       margin: 0;
-      padding: 20px;
-      line-height: 1.6;
-      direction: rtl;
+      padding: 0;
       text-align: center;
+      direction: rtl;
+    }
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 0 auto 20px auto;
     }
     nav {
       background-color: #007BFF;
-      padding: 10px;
+      padding: 10px 0;
     }
     nav button {
       background-color: white;
@@ -25,52 +33,77 @@
       margin: 5px;
       cursor: pointer;
       font-weight: bold;
+      border-radius: 5px;
     }
     nav button:hover {
       background-color: #e7e7e7;
     }
-    .hidden {
+    section {
+      padding: 20px;
       display: none;
     }
+    section.active {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 60vh;
+    }
+    h2, p {
+      margin: 10px 0;
+    }
     .question {
-      margin: 20px 0;
+      margin: 15px auto;
+      width: 90%;
+      max-width: 600px;
     }
     .question span {
       display: block;
       margin-bottom: 10px;
       font-weight: bold;
     }
-    .result {
-      font-size: 20px;
+    input[type="number"] {
+      width: 60px;
+      padding: 5px;
+      text-align: center;
+    }
+    button[type="submit"], #showTipsBtn {
+      background-color: #28a745;
+      color: white;
+      border: none;
+      padding: 10px 20px;
       margin-top: 20px;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    #result {
+      margin-top: 20px;
+      font-size: 20px;
+      color: #333;
     }
     .tips {
       margin-top: 20px;
-      background: #fff;
       padding: 20px;
+      background: white;
       border: 1px solid #ccc;
-    }
-    img {
-      max-width: 100%;
-      height: auto;
-      margin-bottom: 20px;
+      width: 80%;
+      max-width: 700px;
+      text-align: center;
     }
   </style>
 </head>
 <body>
 
-  <!-- Banner Image -->
   <img src="https://via.placeholder.com/800x200?text=اختبار+الذكاء+العاطفي" alt="صورة بانر">
 
-  <!-- Navigation Buttons -->
   <nav>
     <button onclick="showSection('about')">من نحن؟</button>
     <button onclick="showSection('home')">الإستقبال</button>
     <button onclick="showSection('quiz')">ابدأ الإختبار</button>
   </nav>
 
-  <!-- Section: About Us -->
-  <section id="about" class="hidden">
+  <section id="about" class="active">
     <h2>من نحن؟</h2>
     <p>
       سندة التواتي طالبة بالمعهد العالي للدراسات التطبيقية في الإنسانيات بزغوان<br>
@@ -78,25 +111,19 @@
     </p>
   </section>
 
-  <!-- Section: Home / Welcome -->
-  <section id="home" class="hidden">
+  <section id="home">
     <h2>اختبار الذكاء العاطفي للمعلمين</h2>
     <p>
-      مرحبًا بك في هذا الاختبار التفاعلي الذي يهدف إلى قياس مستوى الذكاء العاطفي لديك كمعلم.
+      مرحبًا بك في هذا الاختبار التفاعلي الذي يهدف إلى قياس مستوى الذكاء العاطفي لديك كمعلم.<br>
       ستساعدك الأسئلة التالية على التعرف على قدراتك في إدارة مشاعرك وفهم مشاعر تلاميذك.
     </p>
     <button onclick="showSection('quiz')">إبدأ الإختبار</button>
   </section>
 
-  <!-- Section: Quiz -->
-  <section id="quiz" class="hidden">
+  <section id="quiz">
     <h2>الأسئلة</h2>
     <form id="quizForm">
-      <!-- Questions -->
-      <div class="question" dir="rtl">
-        <span>1. أستطيع التعرف على مشاعري بسهولة أثناء التدريس</span>
-        <input type="number" name="q1" min="1" max="5" required>
-      </div>
+      <div class="question"><span>1. أستطيع التعرف على مشاعري بسهولة أثناء التدريس</span><input type="number" name="q1" min="1" max="5" required></div>
       <div class="question"><span>2. ألاحظ مشاعر تلاميذي حتى لو لم يعبروا عنها بالكلمات</span><input type="number" name="q2" min="1" max="5" required></div>
       <div class="question"><span>3. أستطيع تمييز الفروق بين المشاعر المختلفة التي أمر بها في خلال الحصة</span><input type="number" name="q3" min="1" max="5" required></div>
       <div class="question"><span>4. أستطيع تمييز كيف تؤثر مشاعري الشخصية على تفاعلي مع التلاميذ واتخاذ خطوات لضبطها عند الحاجة</span><input type="number" name="q4" min="1" max="5" required></div>
@@ -110,31 +137,26 @@
       <div class="question"><span>12. أستطيع تعزيز مشاعر الثقة بالنفس لدى تلاميذي من خلال تعاطفي معهم</span><input type="number" name="q12" min="1" max="5" required></div>
       <div class="question"><span>13. أستغل المشاعر الإيجابية لتعزيز تجربة التعلم لدى التلاميذ</span><input type="number" name="q13" min="1" max="5" required></div>
       <div class="question"><span>14. أستمع بعمق لمشاعر التلاميذ وأمنحهم الشعور بأنهم مفهومون ومقدَّرون</span><input type="number" name="q14" min="1" max="5" required></div>
-
       <button type="submit">إرسال</button>
     </form>
-    <div id="result" class="result hidden"></div>
+    <div id="result"></div>
     <button id="showTipsBtn" class="hidden" onclick="showTips()">👀 عرض نصائح لتعزيز الذكاء العاطفي</button>
     <div id="tips" class="tips hidden">
       <h3>🧠 إليك بعض النصائح العملية لتعزيز مهارات الذكاء العاطفي لديك</h3>
-      <p><strong>أولًا: وعي الذات</strong><br>
-        تأمل المشاعر اليومية - تدوين الانفعالات - طلب تغذية راجعة</p>
-      <p><strong>🧘 ثانيًا: تنظيم الذات</strong><br>
-        التنفس العميق - التحكم في نبرة الصوت - استخدام عبارات "أنا"</p>
-      <p><strong>❤️ ثالثًا: التعاطف</strong><br>
-        الاستماع بإنصات - وضع نفسك مكان التلميذ - فهم الخلفيات المختلفة</p>
-      <p><strong>🧑‍🤝‍🧑 رابعًا: المهارات الاجتماعية</strong><br>
-        بناء علاقات إيجابية - حل النزاعات - التواصل الفعّال</p>
-      <p><strong>🔋 خامسًا: التحفيز الذاتي</strong><br>
-        تحديد أهداف - الاحتفال بالنجاحات - الحفاظ على الشغف</p>
+      <p><strong>وعي الذات:</strong> تأمل، تدوين، تغذية راجعة</p>
+      <p><strong>تنظيم الذات:</strong> تنفس، نبرة الصوت، "أنا" بدلًا من "أنت"</p>
+      <p><strong>التعاطف:</strong> إنصات، وضع النفس مكان التلميذ، فهم الخلفيات</p>
+      <p><strong>المهارات الاجتماعية:</strong> علاقات إيجابية، حل النزاعات، تواصل واضح</p>
+      <p><strong>التحفيز الذاتي:</strong> أهداف، احتفال بالنجاحات، شغف بالتدريس</p>
     </div>
   </section>
 
-  <!-- JavaScript to Handle Navigation and Quiz Logic -->
   <script>
     function showSection(id) {
-      document.querySelectorAll('section').forEach(s => s.classList.add('hidden'));
-      document.getElementById(id).classList.remove('hidden');
+      document.querySelectorAll('section').forEach(sec => {
+        sec.classList.remove('active');
+      });
+      document.getElementById(id).classList.add('active');
     }
 
     document.getElementById('quizForm').addEventListener('submit', function(e) {
@@ -155,7 +177,6 @@
       }
       const resultDiv = document.getElementById('result');
       resultDiv.textContent = message;
-      resultDiv.classList.remove('hidden');
       document.getElementById('showTipsBtn').classList.remove('hidden');
     });
 
